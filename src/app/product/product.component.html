@@ -1,0 +1,20 @@
+<div class="product-container" *ngFor="let product of products; index as i">
+  <div [class.sale]="product.onSale" [class.no-sale]="!product.onSale">
+    <div [ngClass]="productClasses(i)">Quantity: {{cart[i]}}</div>
+    <div [ngClass]="productClasses(i)">{{product.name}}</div>
+    <div [ngClass]="productClasses(i)">$ {{product.price}}</div>
+    <div> <img class="product-image" src="{{product.imagePath}}" alt={{name}}> </div>
+    <div>
+      <button (click)="toggleSale($event, i)"> On Sale </button>
+      <button (click)="addToCart($event, i)"> Add to Cart </button>
+      <button (click)="removeFromCart($event, i)" *ngIf="cart[i] > 0"> Remove From Cart </button>
+    </div>
+    <div>
+      <select>
+        <option *ngFor="let q of quantities">
+          {{q}}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>

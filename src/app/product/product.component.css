@@ -1,0 +1,28 @@
+.product-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+}
+
+
+.sale {
+    background-color: green;
+}
+
+.sale-text {
+    font-size: 1.5em;
+    color: white;
+}
+
+.no-sale-text {
+    color: black;
+}
+
+.no-sale {
+    background-color: white;
+}
+
+.image {
+    height: 100px;
+}
