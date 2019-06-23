@@ -1,0 +1,80 @@
+<h2>Create Product Form</h2>
+
+<div class="form-group">
+  <form (ngSubmit)="createProduct(productForm)" #productForm="ngForm">
+    <div ngModelGroup="product">
+
+      <div class="product-id">
+        <input type="number" 
+               placeholder="Product Id" 
+               required 
+               name="id" 
+               #productID="ngModel"
+               ngModel>
+      </div>
+      <div *ngIf="(formSubmitted || productName.dirty) && productID.invalid"> 
+        <div *ngIf="productID.errors.required">
+          Product Id is Mandatory
+        </div>
+      </div>
+
+      <div class="product-name">
+          <input type="text" 
+                 placeholder="Product Name" 
+                 required 
+                 minlength="2"
+                 #productName="ngModel"
+                 name="name" 
+                 ngModel>
+      </div>
+      <div *ngIf="(formSubmitted || productName.dirty) && productName.invalid">
+        <div *ngIf="productName.errors.required">
+          Priduct Name is Mandatory
+        </div>
+        <div *ngIf="productName.errors.minlength">
+          Product Name must be at least of length 2
+        </div>
+      </div>
+
+        <div class="product-price">
+            <input type="number" 
+                   placeholder="Product Price" 
+                   required 
+                   name="price"
+                   #productPrice="ngModel" 
+                   ngModel>
+        </div>
+        <div *ngIf="(formSubmitted || productPrice.dirty) && productPrice.invalid">
+          <div *ngIf="productPrice.errors.required">
+            Product Price is Mandatory
+          </div>
+        </div>
+        
+          <div class="product-image-url">
+              <input type="text" 
+                     placeholder="Product Image URL" 
+                     required 
+                     name="imagePath" 
+                     #productURL="ngModel"
+                     ngModel>
+          </div>
+          <div *ngIf="(formSubmitted || productURL.dirty) && productURL.invalid">
+            <div *ngIf="productURL.errors.required">
+              Product URL is Mandatory
+            </div>
+          </div>
+
+          <div class="product-on-sale">
+               <input type="checkbox"
+                      name="onSale" 
+                      ngModel>
+                      On Sale
+          </div>
+
+    </div>
+    <button type="submit">Create</button>
+  </form>
+</div>
+
+<h4>Product Name: {{product.name}}</h4>
+<h4>Product is: {{product | json}}</h4>

@@ -26,15 +26,4 @@ export class ProductListComponent implements OnInit {
     product.inCart += change.changeQuantity;
   }
 
-  // onAddToCart(index) {
-  //   console.log(`We are adding this product to the cart: ${index}`);
-  //   this.cart[index]++;
-  //   console.log(`after: ${this.cart[index]}`);
-  // }
-
-  // onRemoveFromCart(index) {
-  //   console.log('We are removing this product from the cart', event);
-  //   if (this.cart[index] > 0) { this.cart[index]--; } else { this.cart[index] = 0; }
-  // }
-
 }
