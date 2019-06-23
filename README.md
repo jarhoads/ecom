@@ -2,7 +2,7 @@
 
 A small e-Commerce app for learning Angular 7.
   
-These are my attempts at the exercises from "Angular Up and Running"  
+These are my solutions for the exercises from "Angular Up and Running"  
   
 Each commit is a solution to one chapter exercises (-ish, sometimes I forget to commit before I begin the next chapter)  
   
