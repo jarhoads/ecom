@@ -1,0 +1,15 @@
+.product-id .ng-valid,
+.product-name .ng-valid,
+.product-price .ng-valid,
+.product-image-url .ng-valid,
+.product-on-sale .ng-valid {
+background-color: green;
+}
+
+.product-id .ng-invalid,
+.product-name .ng-invalid,
+.product-price .ng-invalid,
+.product-image-url .ng-invalid,
+.product-on-sale .ng-invalid {
+    background-color: red;
+}
