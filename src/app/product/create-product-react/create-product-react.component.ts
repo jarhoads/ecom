@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+
 import { Product } from 'src/app/model/product';
+import { ProductService } from 'src/app/services/product.service';
 
 // counter for test instances
 let counter = 1;
@@ -13,13 +15,15 @@ let counter = 1;
 export class CreateProductReactComponent implements OnInit {
 
   public productForm: FormGroup;
+  public message = null;
+
   private product: Product;
 
   formSubmitted = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private productService: ProductService) {
     this.createForm();
-    this.product = new Product(1, `Test ${counter++}`, 50, '/assets/images/test.png', false, 0);
+    this.product = new Product(1, '', 0, '', false, 0);
   }
 
   createForm() {
@@ -43,13 +47,27 @@ export class CreateProductReactComponent implements OnInit {
 
     console.log(`Product Form: ${JSON.stringify(this.productForm.value)}`);
     if (this.productForm.valid) {
-      const formProd: Product = this.productForm.value;
-      formProd.inCart = 0;
-      this.product = formProd;
+
+      this.product = this.updateProduct(this.productForm);
+
+      const created = this.productService.createProduct(this.product);
+      if (created) {
+        this.message = `Successfully created product: ${JSON.stringify(this.product)}`;
+        this.product = new Product(1, '', 0, '', false, 0);
+      } else {
+        this.message = `Product with id ${this.product.id} already exists`;
+      }
+
       console.log(`Creating Product: ${JSON.stringify(this.product)}`);
     } else {
       console.log('Error: product is in an invalid state');
     }
+  }
+
+  private updateProduct(prod: FormGroup): Product {
+      const formProd: Product = prod.value;
+      formProd.inCart = 0;
+      return formProd;
   }
 
   loadStockFromServer() {

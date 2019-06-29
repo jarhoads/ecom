@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../model/product';
 import { ProductQuantityChange } from '../model/product-quantity-change';
+import { ProductService } from '../services/product.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class ProductItemComponent implements OnInit {
 
   public quantities = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() { }
 
@@ -32,7 +33,8 @@ export class ProductItemComponent implements OnInit {
 
   toggleSale(event, index) {
     console.log('We are toggling the sale state for this product', event);
-    this.product.onSale = !this.product.onSale;
+    this.productService.toggleSale(this.product);
+    // this.product.onSale = !this.product.onSale;
   }
 
   onAddToCart(event) {

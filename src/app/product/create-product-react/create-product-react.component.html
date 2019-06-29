@@ -1,5 +1,7 @@
 <h2>Create Product Form</h2>
 
+<div *ngIf="message">{{message}}</div>
+
 <div class="form-group">
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div class="product-id">
