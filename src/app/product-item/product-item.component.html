@@ -5,7 +5,10 @@
         <div class="price" [ngClass]="productClasses(i)">$ {{product.price}}</div>
         <div> <img class="product-image" src="{{product.imagePath}}" alt={{name}}> </div>
         <div>
-          <button (click)="toggleSale($event)"> On Sale </button>
+          <button (click)="toggleSale($event)"
+                  *ngIf="!product.onSale"> On Sale </button>
+          <button (click)="toggleSale($event)"
+                  *ngIf="product.onSale"> Not On Sale </button>
           <button class="increment" (click)="onAddToCart($event)"> Add to Cart </button>
           <button class="decrement" (click)="onRemoveFromCart($event)" *ngIf="product.inCart > 0"> Remove From Cart </button>
         </div>
